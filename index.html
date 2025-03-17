@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Góc Vui Vẻ</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            animation: popUp 0.5s ease-out;
+            position: relative;
+        }
+        @keyframes popUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        h2 {
+            color: #444;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #ff7675;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 118, 117, 0.5);
+        }
+        button:hover {
+            background: #d63031;
+            transform: scale(1.1);
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #555;
+            font-style: italic;
+            min-height: 50px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #image {
+            margin-top: 20px;
+            display: none;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .heart {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 40px;
+            color: #ff7675;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="content">
+        <span class="heart">❤️</span>
+        <h2>Nhấn nút để nhận động lực 💖</h2>
+        <button id="clickButton" onclick="showMessage()">Bấm vào đây</button>
+        <p id="message"></p>
+    </div>
+    <img id="image" src="anh.jpg" style="width: 300px;" alt="Yêu thương">
+
+    <script>
+        let clickCount = 0;
+        function showMessage() {
+            const messages = [
+                "Gửi anh chút dễ huông của em bé, chụt chụt💕",
+                "Sao lại tiêu cực chứ hỏ nhỏ LK kia ❤️",
+                "Hay là tại nay chưa dỗi anh ta, vậy là phải dỗi anh thoi",
+                "Nói chứ iu mò 😘",
+                "Tôi gia trưởng, tôi không cho phép anh tiêu cực!",
+                "Nhớ chưa, iu iu ❤️",
+                ];
+            if (clickCount < messages.length) {
+                document.getElementById("message").innerText = messages[clickCount];
+                document.getElementById("message").style.opacity = 1;
+                clickCount++;
+            }
+            if (clickCount >= messages.length) {
+                document.getElementById("content").style.display = "none";
+                document.getElementById("image").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
